@@ -17,3 +17,6 @@ aws configure set aws_access_key_id $aws_access_key_id --profile $profile
 aws configure set aws_secret_access_key $aws_secret_access_key --profile $profile
 aws configure set region $region --profile $profile
 aws configure set output $output --profile $profile
+
+#test your profile
+aws sts get-caller-identity --profile $profile
