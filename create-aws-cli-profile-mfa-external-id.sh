@@ -36,3 +36,6 @@ aws configure set external_id $external_id --profile $role_profile
 aws configure set region $region --profile $role_profile
 aws configure set output $output --proflie $role_profile
 aws configure set source_profile $source_profile --profile $role_profile
+
+#test your profile
+aws sts get-caller-identity --profile $role_profile
