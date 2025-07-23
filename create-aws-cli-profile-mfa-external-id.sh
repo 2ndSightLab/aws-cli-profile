@@ -1,3 +1,8 @@
+#This will create the source profile and the role profile
+# Enter the name of the profile with the credentials (source profile)
+# Enter the name of the profile that is configured to use the role (role profile)
+# external id is optional but should be used with external accounts
+
 echo "Enter source profile name"
 read source_profile
 
@@ -32,9 +37,11 @@ aws configure set output $output --profile $source_profile
 
 aws configure set role_arn $role_arn --profile $role_profile
 aws configure set mfa_serial $mfa_serial --profile $role_profile
-aws configure set external_id $external_id --profile $role_profile
+if [ "$external_id" != "" ]; then 
+  aws configure set external_id $external_id --profile $role_profile
+fi
 aws configure set region $region --profile $role_profile
-aws configure set output $output --proflie $role_profile
+aws configure set output $output --profile $role_profile
 aws configure set source_profile $source_profile --profile $role_profile
 
 #test your profile
