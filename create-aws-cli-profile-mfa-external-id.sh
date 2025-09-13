@@ -4,45 +4,46 @@
 # external id is optional but should be used with external accounts
 
 echo "Enter source profile name"
-read source_profile
+read SOURCE_PROFILE
 
 echo "Enter Key ID:"
-read aws_access_key_id
+read AWS_ACCESS_KEY_ID
 
 echo "Enter secret access key:"
-read aws_secret_access_key
+read AWS_SECRET_ACCESS_KEY
 
 echo "Enter region (e.g. us-east-1)"
-read region
+read REGION
 
 echo "Enter role profile"
-read role_profile
+read PROFILE
 
 echo "Enter role arn"
-read role_arn
+read ROLE_ARN
 
 echo "Enter mfa arn"
-read mfa_serial
+read MFA_SERIAL
 
 echo "Enter external id"
-read external_id
+read EXTERNAL_ID
 
 echo "Enter output format (e.g. json or text)"
-read output
+read OUTPUT
 
-aws configure set aws_access_key_id $aws_access_key_id --profile $source_profile
-aws configure set aws_secret_access_key $aws_secret_access_key --profile $source_profile
-aws configure set region $region --profile $source_profile
-aws configure set output $output --profile $source_profile
+aws configure set aws_access_key_id "$AWS_ACCESS_KEY_ID" --profile "$SOURCE_PROFILE"
+aws configure set aws_secret_access_key "$AWS_SECRET_ACCESS_KEY" --profile "$SOURCE_PROFILE"
+aws configure set region "$REGION" --profile "$SOURCE_PROFILE"
+aws configure set output "$OUTPUT" --profile "$SOURCE_PROFILE"
 
-aws configure set role_arn $role_arn --profile $role_profile
-aws configure set mfa_serial $mfa_serial --profile $role_profile
-if [ "$external_id" != "" ]; then 
-  aws configure set external_id $external_id --profile $role_profile
+aws configure set role_arn "$ROLE_ARN" --profile "$PROFILE"
+aws configure set mfa_serial "$MFA_SERIAL" --profile "$PROFILE"
+if [ "$EXTERNAL_ID" != "" ]; then 
+  aws configure set external_id "$EXTERNAL_ID" --profile "$PROFILE"
 fi
-aws configure set region $region --profile $role_profile
-aws configure set output $output --profile $role_profile
-aws configure set source_profile $source_profile --profile $role_profile
+aws configure set region "$REGION" --profile "$PROFILE"
+aws configure set output "$OUTPUT" --profile "$PROFILE"
+aws configure set source_profile "$SOURCE_PROFILE" --profile "$PROFILE"
 
 #test your profile
-aws sts get-caller-identity --profile $role_profile
+aws sts get-caller-identity --profile "$PROFILE"
+
