@@ -1,22 +1,22 @@
 echo "Enter profile name"
-read profile
+read PROFILE
 
 echo "Enter Key ID:"
-read aws_access_key_id
+read AWS_ACCESS_KEY_ID
 
 echo "Enter secret access key:"
-read aws_secret_access_key
+read AWS_SECRET_ACCESS_KEY
 
 echo "Enter region (e.g. us-east-1)"
-read region
+read REGION
 
 echo "Enter output format (e.g. json or text)"
-read output
+read OUTPUT
 
-aws configure set aws_access_key_id $aws_access_key_id --profile $profile
-aws configure set aws_secret_access_key $aws_secret_access_key --profile $profile
-aws configure set region $region --profile $profile
-aws configure set output $output --profile $profile
+aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID --profile $PROFILE
+aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY --profile $PROFILE
+aws configure set region $REGION --profile $PROFILE
+aws configure set output $OUTPUT --profile $PROFILE
 
 #test your profile
-aws sts get-caller-identity --profile $profile
+aws sts get-caller-identity --profile $PROFILE
